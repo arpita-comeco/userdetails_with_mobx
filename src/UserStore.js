@@ -16,21 +16,22 @@ class UserStore {
         autorun(this.logUserDetails);
         runInAction(this.prefetchData);
     }
-    get skills(){
-        console.log('getter')
-        return this.userInfo.skills.length
-    }
+    
     logUserDetails= () =>{
-        console.log('Just for logs on skills', this.skills)
+        console.log('autorun- Just for logs on skills', this.skills, 'logs for name change', this.userInfo.name)
     }
     updateUser(newUserData){
-        return newUserData
+        this.userInfo.name= newUserData
     }
     addSkills(newSkill){
-        return newSkill
+        return this.userInfo.skills=[...this.userInfo.skills,newSkill]
     }
     prefetchData(){
         console.log('run in action')
+    }
+    get skills(){
+        console.log('getter')
+        return this.userInfo.skills.length
     }
 }
 
